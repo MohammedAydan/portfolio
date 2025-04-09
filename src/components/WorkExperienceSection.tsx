@@ -13,7 +13,7 @@ const WorkExperienceSection = () => {
             <div className="flex flex-col justify-center items-start gap-5 m-5 mt-5">
 
 
-                {developerData?.workExperience.map((w) => (
+                {developerData?.workExperience?.map((w) => (
                     <WorkExperienceCard
                         key={w.title}
                         title={w.title}
