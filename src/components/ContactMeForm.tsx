@@ -3,9 +3,13 @@ import { Input } from './ui/input'
 import { Textarea } from './ui/textarea'
 import { Button } from './ui/button'
 import { SendMessage, MessageFields } from '@/lib/firebase/SendMessage'
+import { useParams } from 'next/navigation'
 
 const ContactMeForm = () => {
-    const { message, setMessage, loading, error, success, saveMessage } = useSendMessage();
+    const params = useParams();
+    const { message, setMessage, loading, error, success, saveMessage } = useSendMessage({
+        name: params.name?.toString()
+    });
 
     return (
         <section id='contact' className="mt-9 w-full max-w-6xl mx-auto">
@@ -47,7 +51,7 @@ export default ContactMeForm;
 
 
 
-const useSendMessage = () => {
+const useSendMessage = ({ name }: { name?: string } = {}) => {
     const [message, setMessage] = useState<MessageFields>({
         name: "",
         email: "",
@@ -85,7 +89,7 @@ const useSendMessage = () => {
         setError(null);
         setLoading(true);
         try {
-            await SendMessage(message);
+            await SendMessage({ ...message, portfolioName: name ?? "" });
             setMessage({ name: "", email: "", message: "" });
             setSuccess(true);
         } catch (error) {

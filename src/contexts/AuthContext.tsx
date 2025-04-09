@@ -52,6 +52,7 @@ const AuthProvider = ({ children }: { children: ReactNode }) => {
             createSession(token ?? "", { uid: (res as User)?.uid });
             redirect("/");
         } catch (error) {
+            console.error("Error during Google sign-in:", error);
             setError("Error signing in with Google: " + (error as Error).message);
         } finally {
             setLoading(false);
@@ -66,6 +67,7 @@ const AuthProvider = ({ children }: { children: ReactNode }) => {
             removeSession();
             redirect("/");
         } catch (error) {
+            console.error("Error during sign-out:", error);
             setError("Error signing out: " + (error as Error).message);
         } finally {
             setLoading(false);

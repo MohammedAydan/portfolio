@@ -49,6 +49,7 @@ export const signInWithGoogle = async (): Promise<User | Error> => {
 
         return user;
     } catch (err: any) {
+        console.log("Error in signInWithGoogle:", err);
         return new Error(err?.message || "Failed to sign in with Google");
     }
 };
@@ -57,7 +58,7 @@ export const signOut = async (): Promise<void | Error> => {
     try {
         await auth.signOut();
     } catch (err: any) {
-        console.error("Sign out error:", err);
+        console.log("Error in signOut:", err);
         return new Error(err?.message || "Failed to sign out");
     }
 };
@@ -68,7 +69,7 @@ export const getUserData = async (uid: string): Promise<any | null> => {
         const snapshot = await getDoc(docRef);
         return snapshot.exists() ? snapshot.data() : null;
     } catch (err) {
-        console.error("Error fetching user data:", err);
+        console.log("Error in getUserData:", err);
         return null;
     }
 };
@@ -78,7 +79,7 @@ export const updateUserData = async (uid: string, data: any): Promise<void | Err
         const docRef = doc(db, "users", uid);
         await setDoc(docRef, data, { merge: true });
     } catch (err: any) {
-        console.error("Error updating user data:", err);
+        console.log("Error in updateUserData:", err);
         return new Error(err?.message || "Failed to update user data");
     }
 };

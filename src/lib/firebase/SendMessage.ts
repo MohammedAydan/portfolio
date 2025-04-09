@@ -5,9 +5,10 @@ export interface MessageFields {
     name?: string;
     email?: string;
     message?: string;
+    portfolioName?: string;
 }
 
-export const SendMessage = async ({ name, email, message }: MessageFields) => {
+export const SendMessage = async ({ name, email, message, portfolioName }: MessageFields) => {
     try {
         const messageId = `msg-${new Date().getTime()}`;
         await setDoc(doc(db, "messages", messageId), {
@@ -15,6 +16,7 @@ export const SendMessage = async ({ name, email, message }: MessageFields) => {
             name,
             email,
             message,
+            portfolioName,
             createdAt: new Date().toISOString(),
             machine: navigator.userAgent ?? null,
         }, {
