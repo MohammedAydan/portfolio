@@ -26,7 +26,7 @@ const AuthProvider = ({ children }: { children: ReactNode }) => {
                 removeSession();
                 setUser(null);
                 setLoading(false);
-                redirect("/auth");
+                // redirect("/auth");
             }
             setLoading(true);
             setUser(currentUser);
