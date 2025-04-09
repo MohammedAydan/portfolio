@@ -1,31 +1,34 @@
 import { Calendar } from 'lucide-react'
-import React, { ElementType } from 'react'
+import React, { ElementType, JSX } from 'react'
 
 const EducationAndCCard = (
     {
         title,
         subTitle,
         icon: Icon,
+        actions,
     }:
         {
             title: string,
             subTitle: string,
             icon: ElementType,
+            actions?: JSX.Element,
         }
 ) => {
     return (
         <div className='w-full flex justify-between items-center gap-5'>
             <div className='flex justify-start items-center gap-5'>
-                <div className="bg-black/5 rounded-xl p-4">
+                <div className="bg-foreground/10 rounded-xl p-4">
                     <Icon />
                 </div>
                 <div className="flex flex-col justify-start">
-                    <p className='font-medium'>{title}</p>
-                    <p className='text-black/50'>{subTitle}</p>
+                    <p className='font-medium text-foreground'>{title}</p>
+                    <p className='text-foreground/80'>{subTitle}</p>
                 </div>
             </div>
-            <div className="">
+            <div className="flex justify-between items-center gap-2">
                 <Calendar />
+                {actions}
             </div>
         </div>)
 }

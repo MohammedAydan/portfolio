@@ -1,0 +1,22 @@
+{
+    "navBar": {
+        "title": "My Portfolio",
+        "home": "Home",
+        "projects": "Projects",
+        "skills": "Skills",
+        "contact": "Contact",
+        "english": "English",
+        "arabic": "Arabic"
+    },
+    "hero": {
+        "hello": "Hello, I'm",
+        "name": "Mohamed Aydan",
+        "title": "Full Stack And Flutter Developer",
+        "description": "I'm a full-stack developer, I love to build web applications and solve problems.",
+        "viewProjects": "View Projects",
+        "downloadCv": "Download CV"
+    },
+    "myProjects": {
+        "title": "My Projects"
+    }
+}
